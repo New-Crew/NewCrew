@@ -25,7 +25,15 @@ userController.addUser = (req, res, next) => {
 };
 
 userController.getUsers = (req, res, next) => {
-
+  const queryString = 'SELECT email, _id, first_name, last_name, phone FROM users WHERE NOT admin;'
+  db.query(queryString, [], (err, response) => {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.locals.allUsers = response.rows;
+    return next();
+  })
 };
 
 userController.deleteUser = (req, res, next) => {

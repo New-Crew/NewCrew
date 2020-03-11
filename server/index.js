@@ -3,6 +3,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const authController = require('./controllers/authController.js');
 const userController = require('./controllers/userController.js');
+const groupController = require('./controllers/groupController.js');
 
 const port = 3000;
 
@@ -28,9 +29,11 @@ app.post('/login', authController.getUserData, (req, res) => {
   res.status(200).json(res.locals.userData);
 });
 
-// app.get('/admin', userController.getUsers)
+app.post('/addUser', userController.addUser, userController.getUsers, (req, res) => {
+  res.status(200).json(res.locals.allUsers);
+});
 
-app.post('/addUser', userController.addUser, (req, res) => {
+app.post('/generateGroups', userController.getUsers, groupController.generateGroups, (req, res) => {
   res.status(200).json();
 });
 

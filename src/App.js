@@ -4,7 +4,5 @@ import LoginContainer from './containers/LoginContainer.jsx';
 
 const rootContainer = document.getElementById("root");
 
-render(
-    <LoginContainer />, rootContainer);
+render(<LoginContainer />, rootContainer);
 
-console.log('index.jsx ran');

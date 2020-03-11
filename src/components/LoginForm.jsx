@@ -1,9 +1,9 @@
 // first option is a Q asking if they're creating a new team - if so, a required input field will appear for the organization name. They'll then enter their email and password and click a button that reads "create team"
 
 // if they're not creating a new team, they'll see just the email and password options + a login button
-
+import UserContainer from '../containers/UserContainer.jsx'
 import React, { Component, useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom'
 
 const LoginForm = () => {
     const [isAdmin, setAdmin] = useState(false);
@@ -26,6 +26,7 @@ const LoginForm = () => {
 
         if(email === 'abc') {
             setUser(true)
+            if(isUser === true) return(<Redirect to="/user"/>)
         }
 
         // const fetchItems = () => {
@@ -51,29 +52,22 @@ const LoginForm = () => {
         // setEmail()
 
     }
- 
+    
 
     return (
         <div>
-            <Router>
-                <Switch>
-                    <Route exact path="/user">
-                        <UserContainer />
-                    </Route>
-                <form>
-                    <label>Username</label>
-                    <br />
-                    <input type="text" placeholder="enter your email" id="email" onChange={(event) => setEmail(event.target.value)}></input>
-                    <br />
-                    <br />
-                    <label>Password</label>
-                    <br />
-                    <input type="text" placeholder="enter your password" id="password" onChange={(event) => setPassword(event.target.value)}></input>
-                    <br />
-                    <input type="submit" onClick={userLogin} ></input>
-                </form>
-                </Switch>
-            </Router>
+            <form>
+                <label>Username</label>
+                <br />
+                <input type="text" placeholder="enter your email" id="email" onChange={(event) => setEmail(event.target.value)}></input>
+                <br />
+                <br />
+                <label>Password</label>
+                <br />
+                <input type="text" placeholder="enter your password" id="password" onChange={(event) => setPassword(event.target.value)}></input>
+                <br />
+                <input type="submit" onClick={userLogin} ></input>
+            </form>
         </div>
     )
 }

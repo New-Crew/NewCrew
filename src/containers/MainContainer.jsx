@@ -15,7 +15,7 @@ function MainContainer() {
 
     return (
         <Router>
-            <Nav />
+            {/* <Nav /> */}
             <Switch>
                 <Route exact path="/">
                     <LoginForm />

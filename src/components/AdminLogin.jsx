@@ -1,9 +1,11 @@
 // this component shows when the admin has selected that they are therefore an Admin
 import React, { Component, useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
+import Nav from './Nav.jsx'
 
 const AdminLogin = () => {
     const [isLogged, setLogin] = useState(false);
+    const [admin, setAdmin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [orgName, setOrgName] = useState('');
@@ -14,11 +16,25 @@ const AdminLogin = () => {
         console.log("password: ", password)
         // add admin to the database
         event.preventDefault()
-        // fetch-post email and password to the admin database
-        if (email === "abc") {
-            setLogin(true)
+
+        const stringify = JSON.stringify({ email, password, admin })
+        const headers = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: stringify
         }
 
+        fetch('/signup', headers)
+            .then((data) => data.json())
+            .then((response) => {
+                console.log("response[0]", response[0].admin)
+                const { admin } = response[0]
+                if (admin === true) {
+                    setLogin(true);
+                } else {
+                    alert("you're not an admin")
+                }
+            })
     }
 
     if (isLogged === true) {
@@ -27,7 +43,9 @@ const AdminLogin = () => {
     }
 
     return (
+
         <div>
+            <Nav />
             <form>
                 <label>What is the name of your organization?</label>
                 <br />

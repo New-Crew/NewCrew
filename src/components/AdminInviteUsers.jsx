@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 
-function inviteUsers() {
+function AdminInviteUsers() {
 
 
     return (
@@ -14,3 +14,5 @@ function inviteUsers() {
         </div>
     )
 }
+
+export default AdminInviteUsers;

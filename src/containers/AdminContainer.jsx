@@ -2,20 +2,25 @@
 // it will first render the AdminMainConsole
 
 import React, { Component } from 'react';
-import AdminConsole from '../components/AdminMainConsole';
-import AdminInviteUser from '../components/AdminInviteUsers'
-import AdminCreateGroups from '../components/AdminCreateGroups'
+import AdminMainConsole from '../components/AdminMainConsole.jsx';
+import AdminInviteUser from '../components/AdminInviteUsers.jsx'
+import AdminCreateGroups from '../components/AdminCreateGroups.jsx'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 
 function AdminContainer() {
 
     return (
-
+// will need to render certain components depending on what selections the admin makes
         <div className="AdminConsole">
-            // will need to render certain components depending on what selections the admin makes
-            <AdminConsole />
+            <p> admin container</p>
+            
+            {/* <AdminMainConsole />
             <AdminCreateGroups />
-            <AdminInviteUser />
+            <AdminInviteUser /> */}
         </div>
     )
 }
+
+export default AdminContainer;
+
+

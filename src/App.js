@@ -1,25 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import LoginContainer from './containers/LoginContainer.jsx';
+import MainContainer from './containers/MainContainer.jsx';
 
 
 const rootContainer = document.getElementById("root");
 
-render(
-    // <LoginContainer />
-    
-    (<Router>
-        <div className="login">
+render(<MainContainer />, rootContainer);
 
-            <Route path="/" component={LoginForm} />
-            <Route path="/admin" component={AdminLogin} />
-
-            {/* <Route exact path="/admin" render={() => (<AdminLogin />)} /> */}
-
-
-        </div>
-    </Router>)
-    
-    , rootContainer);
-
-console.log('index.jsx ran');

@@ -2,12 +2,10 @@
 
 import React, { Component } from 'react';
 
-function createGroups() {
-
-
-
+function AdminCreateGroups() {
     return (
 
         <button>Generate Groups</button>
     )
 }
+export default AdminCreateGroups;

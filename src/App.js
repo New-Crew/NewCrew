@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import LoginContainer from './containers/LoginContainer.jsx';
 
 const rootContainer = document.getElementById("root");
 
-render(<div>Hello team</div>, rootContainer);
+render(
+    <LoginContainer />, rootContainer);
 
 console.log('index.jsx ran');

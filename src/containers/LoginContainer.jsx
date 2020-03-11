@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 import Nav from '../components/Nav.jsx'
 import LoginForm from '../components/LoginForm.jsx'
 import AdminLogin from '../components/AdminLogin.jsx'
-import UserContainer from '../containers/UserContainer.jsx'
 import { BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 
 function LoginContainer() {
@@ -20,10 +19,6 @@ function LoginContainer() {
                     <Route path="/admin">
                         <AdminLogin />
                     </Route>
-                    <Route path="/user">
-                        <UserContainer />
-                    </Route>
-
 
                     {/* <Route exact path="/admin" render={() => (<AdminLogin />)} /> */}
 

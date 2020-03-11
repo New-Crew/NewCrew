@@ -1,25 +1,17 @@
-// first option is a Q asking if they're creating a new team - if so, a required input field will appear for the organization name. They'll then enter their email and password and click a button that reads "create team"
-
-// if they're not creating a new team, they'll see just the email and password options + a login button
-
+// this component shows when the admin has selected that they are therefore an Admin
 import React, { Component, useState, useEffect } from 'react';
 
 const AdminLogin = () => {
-    const [isAdmin, setAdmin] = useState(false);
+    const [isAdmin, setAdmin] = useState(true);
+    //isAdmin is set to true in this component as they've already made a selection
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [orgName, setOrgName] = useState('');
 
 
-    // this function will first check to see if the email submitted exists in the user database. If it does, that means the user is able to join. If it doesn't exist, we should send a message to the frontend to let them know they haven't been added to a team yet (maybe an alert to let them know to talk to an admin)
-    const handleSubmit = () => {
-        // check if isAdmin is true - if so, don't check database for existence
-        // post email, password, and orgName to the admin database
-        // redirect admin to admin portal
+    // this function will add the admin to the database
+    const handleCreate = () => {
 
-        // if isAdmin is false, check database for user email
-        // if user email exists, redirect user to user portal
-        // if user email does not exist, display/alert an error message that they haven't been invited.
         console.log("handleSubmit works!!")
 
     }
@@ -51,7 +43,7 @@ const AdminLogin = () => {
                 <br />
                 <input type="text" placeholder="enter your password" id="password" name="password"></input>
                 <br />
-                <input type="submit" onClick={() => handleSubmit()} ></input>
+                <input type="submit" onClick={() => handleCreate()} ></input>
             </form>
         </div>
     )

@@ -10,18 +10,13 @@ function LoginContainer() {
     return (
         <Router>
             <div className="login">
-                <Switch>
-                    <Route exact path="/">
-                        <LoginForm />
-                    </Route>
-                    <Route path="/admin">
-                        <AdminLogin />
-                    </Route>
+
+                <Route path="/" component={LoginForm} />
+                <Route path="/admin" component={AdminLogin} />
+
+                {/* <Route exact path="/admin" render={() => (<AdminLogin />)} /> */}
 
 
-                    {/* <Route exact path="/admin" render={() => (<AdminLogin />)} /> */}
-
-                </Switch>
             </div>
         </Router>
     )

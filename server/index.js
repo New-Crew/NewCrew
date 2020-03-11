@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const authController = require('./controllers/authController.js');
+const userController = require('./controllers/userController.js');
 
 const port = 3000;
 
@@ -17,7 +18,7 @@ app.get('/', (req, res) => {
 app.get('/dist/bundle.js', (req, res) => {
   console.log('dist endpoint hit');
   res.sendFile(path.resolve(__dirname, 'dist/bundle.js'));
-})
+});
 
 app.post('/signup', authController.userSignup, authController.getUserData, (req, res) => {
   res.status(200).json(res.locals.userData);
@@ -25,6 +26,12 @@ app.post('/signup', authController.userSignup, authController.getUserData, (req,
 
 app.post('/login', authController.getUserData, (req, res) => {
   res.status(200).json(res.locals.userData);
+});
+
+// app.get('/admin', userController.getUsers)
+
+app.post('/addUser', userController.addUser, (req, res) => {
+  res.status(200).json();
 });
 
 app.use((req, res) => res.sendStatus(404));

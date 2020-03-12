@@ -23,7 +23,9 @@ authController.getUserData = (req, res, next) => {
       return next(err);
     }
     if (!response.rows.includes(response.rows[0])) {
-      return res.send('Incorrect email or password');
+      // return res.send('Incorrect email or password');
+      //changed this to allow for the front end to check the length of the response 
+      res.locals.userData = response.rows
     };
     res.locals.userData = response.rows
     return next();

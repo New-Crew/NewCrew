@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=development webpack-dev-server --open --hot & nodemon server/index.js",
+    "dev": "NODE_ENV=development webpack-dev-server --open --hot & source server/app-env & nodemon server/index.js",
     "nodemon": "nodemon server/index.js"
   },
   "repository": {
@@ -30,6 +30,7 @@
     "babel-loader": "^8.0.6",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.2",
     "path": "^0.12.7",
     "pg": "^7.18.2",

@@ -1,7 +1,6 @@
 // MainContainer renders the loginForm
 
 import React, { Component } from 'react';
-import Nav from '../components/Nav.jsx'
 import LoginForm from '../components/LoginForm.jsx'
 import AdminContainer from './AdminContainer.jsx'
 import AdminLogin from '../components/AdminLogin.jsx'
@@ -10,6 +9,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import AdminCreateGroups from '../components/AdminCreateGroups.jsx';
 import AdminInviteUsers from '../components/AdminInviteUsers.jsx';
 import AdminMainConsole from '../components/AdminMainConsole.jsx';
+import AdminManageMembers from '../components/AdminManageMembers.jsx';
 
 function MainContainer() {
 
@@ -37,6 +37,9 @@ function MainContainer() {
                 </Route>
                 <Route path="/main">
                     <AdminMainConsole />
+                </Route>
+                <Route path="/groups">
+                    <AdminManageMembers />
                 </Route>
 
             </Switch>

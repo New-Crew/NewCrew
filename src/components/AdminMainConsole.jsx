@@ -1,17 +1,29 @@
-// should display list of organization members, and also the option to navigate to the "invite user" page as well as a "generate groups" button
-// when the generate groups button is pushed, the groups should appear on the page.
+import { Link } from 'react-router-dom'
+import React, { Component, useState, useEffect } from 'react';
+
 
 function AdminMainConsole() {
-    // will need to do a fetch request here to get a list of all members they've added to their organization. 
+    const [invite, setInvites] = useState(null);
+
+    if (invite === true) {
+
+    }
+
     return (
-        <div className="adminConsole">
-            {/* <h1>{orgName = { orgName }}</h1> */}
-            <p>this is the admin console</p>
-
-
-
-        </div>
-
+        <nav>
+            <h3>Manage your team!</h3>
+            <ul>
+                <Link to="/create">
+                    <li>Generate & Manage Groups</li>
+                </Link>
+                <Link to="/invite">
+                    <li>Invite Users</li>
+                </Link>
+                <Link to="/groups">
+                    <li>Manage Organization</li>
+                </Link>
+            </ul>
+        </nav>
     )
 }
 

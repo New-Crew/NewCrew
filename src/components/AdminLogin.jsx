@@ -8,7 +8,7 @@ const AdminLogin = () => {
     const [admin, setAdmin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [orgName, setOrgName] = useState('');
+    const [orgName, setOrgName] = useState(null);
 
 
     const handleClick = () => {
@@ -42,6 +42,7 @@ const AdminLogin = () => {
         return (<Redirect to="/manage" path />)
     }
 
+
     return (
 
         <div>
@@ -61,7 +62,7 @@ const AdminLogin = () => {
                 <br />
                 <input type="text" placeholder="enter your password" id="password" name="password" onChange={(event) => setPassword(event.target.value)}></input>
                 <br />
-                <input type="submit" onClick={handleClick} ></input>
+                <input type="submit" onClick={handleClick}>Create Team</input>
             </form>
         </div>
     )

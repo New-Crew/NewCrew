@@ -10,10 +10,10 @@ function Nav() {
     <nav>
       <h3>Are you creating a new organization?</h3>
       <ul>
-        <Link style={navStyle} to="/admin">
+        <Link to="/admin">
           <li>Yes</li>
         </Link>
-        <Link style={navStyle} to="/">
+        <Link to="/">
           <li>No</li>
         </Link>
       </ul>

@@ -42,8 +42,8 @@ app.post('/postPrefs', userController.postPrefs, userController.teammatePrefs, (
   res.status(200).json();
 });
 
-app.post('/generateGroups', userController.getUsers, groupController.generateGroups, (req, res) => {
-  res.status(200).json();
+app.post('/generateGroups', groupController.deleteGroups, userController.getUsers, groupController.generateGroups, groupController.sendGroupData, (req, res) => {
+  res.status(200).json(res.locals.groupData);
 });
 
 // test route

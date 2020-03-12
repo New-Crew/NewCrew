@@ -37,11 +37,44 @@ userController.getUsers = (req, res, next) => {
 };
 
 userController.deleteUser = (req, res, next) => {
-
+  const { _id } = req.body;
+  let queryString = 'DELETE FROM users WHERE _id=($1);';
+  db.query(queryString, [_id], (err, response) => {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.locals.allUsers = response.rows;
+    return next();
+  })
 };
 
 userController.postPrefs = (req, res, next) => {
-
+  const { user_id, skill_level, stack } = req.body;
+  let queryString = 'INSERT INTO userprefs (user_id, skill_level, stack) VALUES ($1,$2,$3)';
+  db.query(queryString, [user_id, skill_level, stack], (err, response) => {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    return next();
+  })
 };
+
+userController.teammatePrefs = (req, res, next) => {
+  const { user_id, teammatePrefs } = req.body;
+  let queryString = 'INSERT INTO teammateprefs (user_id, user_preference_id, work_preference) VALUES ';
+  for (let props in teammatePrefs) {
+    queryString = queryString.concat(`(${user_id}, ${props}, ${teammatePrefs[props]}), `)
+  }
+  queryString = queryString.slice(0, (queryString.length - 2)).concat(';');
+  db.query(queryString, [], (err, response) => {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    return next();
+  })
+}
 
 module.exports = userController;

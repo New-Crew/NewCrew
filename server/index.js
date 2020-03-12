@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+
 const authController = require('./controllers/authController.js');
 const userController = require('./controllers/userController.js');
 const groupController = require('./controllers/groupController.js');
@@ -21,11 +22,11 @@ app.get('/dist/bundle.js', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'dist/bundle.js'));
 });
 
-app.post('/signup', authController.userSignup, authController.getUserData, (req, res) => {
+app.post('/signup', authController.userSignup, authController.getUserData, authController.createJWT, (req, res) => {
   res.status(200).json(res.locals.userData);
 });
 
-app.post('/login', authController.getUserData, (req, res) => {
+app.post('/login', authController.getUserData, authController.createJWT, (req, res) => {
   res.status(200).json(res.locals.userData);
 });
 
@@ -33,9 +34,22 @@ app.post('/addUser', userController.addUser, userController.getUsers, (req, res)
   res.status(200).json(res.locals.allUsers);
 });
 
+app.delete('/deleteUser', userController.deleteUser, userController.getUsers, (req, res) => {
+  res.status(200).json(res.locals.allUsers);
+});
+
+app.post('/postPrefs', userController.postPrefs, userController.teammatePrefs, (req, res) => {
+  res.status(200).json();
+});
+
 app.post('/generateGroups', userController.getUsers, groupController.generateGroups, (req, res) => {
   res.status(200).json();
 });
+
+// test route
+// app.get('/test', authController.verifyJWT, (req, res) => {
+//   res.status(200).json({msg: "hello"});
+// })
 
 app.use((req, res) => res.sendStatus(404));
 

@@ -5,6 +5,7 @@ const userController = {};
 userController.addUser = (req, res, next) => {
   // comma-separated string of emails sent in the request from the frontend
   const { csv } = req.body;
+  console.log("csv: ", csv)
   // define query string without email/password/admin values, to later send to SQL database
   let queryString = 'INSERT INTO users (email, password, admin) VALUES ';
   // split email string & iterate

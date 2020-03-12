@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-import LoginContainer from './containers/LoginContainer.jsx';
+import MainContainer from './containers/MainContainer.jsx';
+
 
 const rootContainer = document.getElementById("root");
 
-render(<LoginContainer />, rootContainer);
+render(<MainContainer />, rootContainer);
 

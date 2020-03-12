@@ -53,4 +53,32 @@ groupController.generateGroups = (req, res, next) => {
   });
 }
 
+groupController.deleteGroups = (req, res, next) => {
+  const queryString = `DELETE FROM groups`;
+  db.query(queryString, [], (err, response) => {
+    if (err) {
+      return next(err);
+    }
+    return next();
+  })
+}
+
+groupController.sendGroupData = (req, res, next) => {
+  const queryString = `
+  SELECT a.group_number, b.first_name
+  FROM groups a
+  LEFT JOIN users b
+  ON a.user_id=b._id`
+
+  db.query(queryString, [], (err, response) => {
+    if (err) {
+      // console.log(err);
+      return next(err);
+    }
+    res.locals.groupData = response.rows;
+    // console.log(response.rows);
+    return next();
+  })
+}
+
 module.exports = groupController;

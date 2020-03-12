@@ -12,10 +12,10 @@ function AdminCreateGroups() {
     const headers = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: users
+        body: JSON.stringify({groupSize: 4})
     }
 
-    fetch('/addUser', headers)
+    fetch('/generateGroups', headers)
         .then((data) => data.json())
         .then((response) => {
             console.log("response from addUser: ", response)
